@@ -1,5 +1,5 @@
 <template>
-    C
+
 </template>
 
 <script>
