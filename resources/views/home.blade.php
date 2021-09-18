@@ -39,8 +39,7 @@
                             <div class="col-lg-8">
                                 <div class="content-part">
                                     <div class="slider-des">
-                                        <h1 class="sl-title mb-21">Need Consulting Advice Let's Come Here !</h1>
-                                        <p class="sl-desc mb-40">We are leading  professional Consult providing company<br> all over world providing services over 40 years.</p>
+                                        <h1 class="sl-title mb-21">CIL is now a public company</h1>
                                     </div>
                                     <div class="slider-bottom">
                                         <ul>
