@@ -2084,6 +2084,52 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Router/Routes/BusinessInsights.js":
+/*!********************************************************!*\
+  !*** ./resources/js/Router/Routes/BusinessInsights.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var businessInsights = [{
+  path: 'blog',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../Pages/BusinessInsights/Blog/Blog'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  name: 'blog'
+}, {
+  path: 'blog-detail',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../Pages/BusinessInsights/Blog/BlogDetails/BlogDetails'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  name: 'blog-Detail'
+}, {
+  path: 'article',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../Pages/BusinessInsights/Article/Article'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  name: 'article'
+}, {
+  path: 'article-details',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  name: 'article-details'
+}, {
+  path: 'case-study',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../Pages/BusinessInsights/CaseStudy'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  name: 'case-study'
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (businessInsights);
+
+/***/ }),
+
 /***/ "./resources/js/Router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/Router/index.js ***!
@@ -2118,25 +2164,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var routes = [{
-  path: '',
+/* harmony import */ var _Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes/BusinessInsights */ "./resources/js/Router/Routes/BusinessInsights.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+var routes = [].concat(_toConsumableArray(_Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__["default"]), [{
+  path: 'what-we-do',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Home.vue */ "./resources/js/Pages/Home.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_WhatWeDo_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/WhatWeDo */ "./resources/js/Pages/WhatWeDo/WhatWeDo.vue"));
   },
-  name: 'home'
+  name: 'what-we-do'
 }, {
-  path: 'blog',
+  path: 'processes',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_Blog_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Blog.vue */ "./resources/js/Pages/Blog.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_Processes_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/Processes */ "./resources/js/Pages/WhatWeDo/Processes.vue"));
   },
-  name: 'home'
+  name: 'processes'
 }, {
-  path: 'blog-detail',
+  path: 'who-we-are',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BlogDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BlogDetails.vue */ "./resources/js/Pages/BlogDetails.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhoWeAre_WhoWeAre_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhoWeAre/WhoWeAre */ "./resources/js/Pages/WhoWeAre/WhoWeAre.vue"));
   },
-  name: 'blog-Detail'
-}];
+  name: 'who-we-are'
+}, {
+  path: 'team',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhoWeAre_Teams_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhoWeAre/Teams */ "./resources/js/Pages/WhoWeAre/Teams.vue"));
+  },
+  name: 'team'
+}, {
+  path: 'contact',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_Contact_Contact_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Contact/Contact */ "./resources/js/Pages/Contact/Contact.vue"));
+  },
+  name: 'contact'
+}, {
+  path: 'career',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_Careers_Careers_Careers_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Careers/Careers/Careers */ "./resources/js/Pages/Careers/Careers/Careers.vue"));
+  },
+  name: 'career'
+}, {
+  path: 'opportunities',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_Careers_Opportunities_Opportunities_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Careers/Opportunities/Opportunities */ "./resources/js/Pages/Careers/Opportunities/Opportunities.vue"));
+  },
+  name: 'opportunities'
+}]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
 /***/ }),
@@ -36452,6 +36536,18 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -36482,7 +36578,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Blog_vue":1,"resources_js_Pages_BlogDetails_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_WhatWeDo_WhatWeDo_vue":1,"resources_js_Pages_WhatWeDo_Processes_vue":1,"resources_js_Pages_WhoWeAre_WhoWeAre_vue":1,"resources_js_Pages_WhoWeAre_Teams_vue":1,"resources_js_Pages_Contact_Contact_vue":1,"resources_js_Pages_Careers_Careers_Careers_vue":1,"resources_js_Pages_Careers_Opportunities_Opportunities_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

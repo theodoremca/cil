@@ -182,10 +182,6 @@
 
 <script>
     export default {
-        name: "BlogDetails"
-    }
+        name: 'Blogdetails'
+    };
 </script>
-
-<style scoped>
-
-</style>
