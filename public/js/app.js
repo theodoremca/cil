@@ -2084,6 +2084,52 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Router/Routes/BusinessInsights.js":
+/*!********************************************************!*\
+  !*** ./resources/js/Router/Routes/BusinessInsights.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var businessInsights = [{
+  path: 'blog',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_Blog_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Blog/Blog */ "./resources/js/Pages/BusinessInsights/Blog/Blog.vue"));
+  },
+  name: 'blog'
+}, {
+  path: 'blog-details',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Blog/BlogDetails/BlogDetails */ "./resources/js/Pages/BusinessInsights/Blog/BlogDetails/BlogDetails.vue"));
+  },
+  name: 'blog-Details'
+}, {
+  path: 'article',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_Article_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Article/Article */ "./resources/js/Pages/BusinessInsights/Article/Article.vue"));
+  },
+  name: 'article'
+}, {
+  path: 'article-details',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails */ "./resources/js/Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails.vue"));
+  },
+  name: 'article-details'
+}, {
+  path: 'case-study',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_CaseStudy_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/CaseStudy */ "./resources/js/Pages/BusinessInsights/CaseStudy.vue"));
+  },
+  name: 'case-study'
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (businessInsights);
+
+/***/ }),
+
 /***/ "./resources/js/Router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/Router/index.js ***!
@@ -2118,37 +2164,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var routes = [{
-  path: 'blog',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_Blog_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BusinessInsights/Blog/Blog */ "./resources/js/Pages/BusinessInsights/Blog/Blog.vue"));
-  },
-  name: 'blog'
-}, {
-  path: 'blog-detail',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BusinessInsights/Blog/BlogDetails/BlogDetails */ "./resources/js/Pages/BusinessInsights/Blog/BlogDetails/BlogDetails.vue"));
-  },
-  name: 'blog-Detail'
-}, {
-  path: 'article',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_Article_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BusinessInsights/Article/Article */ "./resources/js/Pages/BusinessInsights/Article/Article.vue"));
-  },
-  name: 'article'
-}, {
-  path: 'article-details',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails */ "./resources/js/Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails.vue"));
-  },
-  name: 'article-details'
-}, {
-  path: 'case-study',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_CaseStudy_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/BusinessInsights/CaseStudy */ "./resources/js/Pages/BusinessInsights/CaseStudy.vue"));
-  },
-  name: 'case-st'
-}, {
+/* harmony import */ var _Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Routes/BusinessInsights */ "./resources/js/Router/Routes/BusinessInsights.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+var routes = [].concat(_toConsumableArray(_Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__["default"]), [{
   path: 'what-we-do',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_WhatWeDo_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/WhatWeDo */ "./resources/js/Pages/WhatWeDo/WhatWeDo.vue"));
@@ -2190,7 +2220,7 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_Careers_Opportunities_Opportunities_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Careers/Opportunities/Opportunities */ "./resources/js/Pages/Careers/Opportunities/Opportunities.vue"));
   },
   name: 'opportunities'
-}];
+}]);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
 /***/ }),
@@ -36548,7 +36578,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Users/theodore_mca/Desk
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_BusinessInsights_Blog_Blog_vue":1,"resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue":1,"resources_js_Pages_BusinessInsights_Article_Article_vue":1,"resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue":1,"resources_js_Pages_BusinessInsights_CaseStudy_vue":1,"resources_js_Pages_WhatWeDo_WhatWeDo_vue":1,"resources_js_Pages_WhatWeDo_Processes_vue":1,"resources_js_Pages_WhoWeAre_WhoWeAre_vue":1,"resources_js_Pages_WhoWeAre_Teams_vue":1,"resources_js_Pages_Contact_Contact_vue":1,"resources_js_Pages_Careers_Careers_Careers_vue":1,"resources_js_Pages_Careers_Opportunities_Opportunities_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_WhatWeDo_WhatWeDo_vue":1,"resources_js_Pages_WhatWeDo_Processes_vue":1,"resources_js_Pages_WhoWeAre_WhoWeAre_vue":1,"resources_js_Pages_WhoWeAre_Teams_vue":1,"resources_js_Pages_Contact_Contact_vue":1,"resources_js_Pages_Careers_Careers_Careers_vue":1,"resources_js_Pages_Careers_Opportunities_Opportunities_vue":1,"resources_js_Pages_BusinessInsights_Blog_Blog_vue":1,"resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue":1,"resources_js_Pages_BusinessInsights_Article_Article_vue":1,"resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue":1,"resources_js_Pages_BusinessInsights_CaseStudy_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
