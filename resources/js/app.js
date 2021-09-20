@@ -39,13 +39,14 @@ import VueRouter from 'vue-router';
 import router from './Router/index';
 import store from './Store/index';
 import App from './App.vue';
+import Admin from './Admin.vue';
 
 Vue.use(VueRouter)
 const app = new Vue({
     el:'#app',
     router,
     store,
-    components:{ App }
+    components:{ App , Admin }
 
 })
 

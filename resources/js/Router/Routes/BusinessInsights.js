@@ -7,9 +7,13 @@ const businessInsights = [
         name:'blog'
     },
     {
+        path: 'add-blog',
+        component:()=>import('.././../Pages/BusinessInsights/Blog/AddBlog'),
+        name:'add-blog'
+    },{
         path: 'blog-details',
-        component:()=>import('.././../Pages/BusinessInsights/Blog/BlogDetails/BlogDetails'),
-        name:'blog-Details'
+        component:()=>import('.././../Pages/BusinessInsights/Blog/AddBlog'),
+        name:'blog-details'
     },
     {
         path: 'article',

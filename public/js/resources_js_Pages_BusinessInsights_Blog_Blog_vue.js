@@ -273,7 +273,25 @@ var render = function() {
                 _c("div", { staticClass: "content-part" }, [
                   _vm._m(1),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("ul", { staticClass: "blog-meta mb-22" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c("i", { staticClass: "fa fa-user-o" }),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "add-blog" } } },
+                          [_vm._v("Admin")]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "desc mb-20" }, [
                     _vm._v(
@@ -297,7 +315,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(4)
           ]),
           _vm._v(" "),
           _c("div", { attrs: { id: "sticky-end" } })
@@ -335,19 +353,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "blog-meta mb-22" }, [
-      _c("li", [
-        _c("i", { staticClass: "fa fa-calendar-check-o" }),
-        _vm._v(" April 6, 2020")
-      ]),
+    return _c("li", [
+      _c("i", { staticClass: "fa fa-calendar-check-o" }),
+      _vm._v(" April 6, 2020")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("i", { staticClass: "fa fa-book" }),
       _vm._v(" "),
-      _c("li", [_c("i", { staticClass: "fa fa-user-o" }), _vm._v(" admin")]),
-      _vm._v(" "),
-      _c("li", [
-        _c("i", { staticClass: "fa fa-book" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "blog-single.html" } }, [_vm._v("Strategy")])
-      ])
+      _c("a", { attrs: { href: "blog-single.html" } }, [_vm._v("Strategy")])
     ])
   },
   function() {
