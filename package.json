@@ -28,6 +28,8 @@
     },
     "dependencies": {
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
-        "firebase": "^9.0.2"
+        "babel-runtime": "^6.26.0",
+        "firebase": "^9.0.2",
+        "vue-image-crop-upload": "^3.0.3"
     }
 }

@@ -13,6 +13,9 @@
                                 <div id="form-messages"></div>
                                 <form id="contact-form" method="post" action="mailer.php">
                                     <div class="row">
+                                          <div class="col-lg-12">
+                                           <ImageUpload></ImageUpload>
+                                        </div>
                                         <div class="col-lg-12">
                                             <div class="form-field">
                                                 <label>Title</label>
@@ -140,7 +143,10 @@
 </template>
 
 <script>
+
+import ImageUpload from "./ImageUpload/ImageUpload";
 export default {
+  components: {ImageUpload, Image },
   name: 'AddBlog',
   created() {
 

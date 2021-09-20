@@ -8,11 +8,11 @@ const businessInsights = [
     },
     {
         path: 'add-blog',
-        component:()=>import('.././../Pages/BusinessInsights/Blog/AddBlog'),
+        component:()=>import('../../Pages/BusinessInsights/Blog/Admin/AddBlog'),
         name:'add-blog'
     },{
         path: 'blog-details',
-        component:()=>import('.././../Pages/BusinessInsights/Blog/AddBlog'),
+        component:()=>import('../../Pages/BusinessInsights/Blog/Admin/AddBlog'),
         name:'blog-details'
     },
     {

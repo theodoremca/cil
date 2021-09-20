@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import AddBlog from "./Pages/BusinessInsights/Blog/AddBlog";
+    import AddBlog from "./Pages/BusinessInsights/Blog/Admin/AddBlog";
     export default {
         name: "App",
         components:{
