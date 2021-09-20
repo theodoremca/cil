@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[384],{8384:(e,s,t)=>{t.r(s),t.d(s,{default:()=>a});const n={name:"Teams"};const a=(0,t(1900).Z)(n,(function(){var e=this.$createElement;return(this._self._c||e)("div")}),[],!1,null,"5eadaabf",null).exports}}]);

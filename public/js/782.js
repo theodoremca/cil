@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[782],{6782:(t,e,s)=>{s.r(e),s.d(e,{default:()=>l});const n={name:"Opportunities"};const l=(0,s(1900).Z)(n,(function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("div",{staticClass:"Opportunities"},[s("pre",{domProps:{textContent:t._s(t.$attrs)}})])}),[],!1,null,null,null).exports}}]);

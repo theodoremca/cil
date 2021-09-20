@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[873],{8873:(e,t,s)=>{s.r(t),s.d(t,{default:()=>u});const n={name:"CaseStudy"};const u=(0,s(1900).Z)(n,(function(){var e=this.$createElement;return(this._self._c||e)("div")}),[],!1,null,"2918afb8",null).exports}}]);
