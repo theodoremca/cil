@@ -527,7 +527,7 @@ var render = function() {
                               [
                                 _c(
                                   "router-link",
-                                  { attrs: { to: { name: "articles" } } },
+                                  { attrs: { to: { name: "article" } } },
                                   [
                                     _vm._v(
                                       "\n                            Articles"
@@ -564,7 +564,7 @@ var render = function() {
                         [
                           _c(
                             "router-link",
-                            { attrs: { to: { name: "careers" } } },
+                            { attrs: { to: { name: "career" } } },
                             [_vm._v("\n                        Careers")]
                           ),
                           _vm._v(" "),
@@ -574,7 +574,7 @@ var render = function() {
                               [
                                 _c(
                                   "router-link",
-                                  { attrs: { to: { name: "careers" } } },
+                                  { attrs: { to: { name: "career" } } },
                                   [
                                     _vm._v(
                                       "\n                            Careers"
@@ -591,7 +591,7 @@ var render = function() {
                               [
                                 _c(
                                   "router-link",
-                                  { attrs: { to: { name: "careers-two" } } },
+                                  { attrs: { to: { name: "career" } } },
                                   [
                                     _vm._v(
                                       "\n                            Careers"

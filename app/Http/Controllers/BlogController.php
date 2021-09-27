@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return blog::latest()->get();
     }
 
     /**
@@ -31,7 +31,7 @@ class BlogController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array[]
+     * @return Blog[]
      */
     public function store(Request $request)
     {
@@ -41,21 +41,17 @@ class BlogController extends Controller
         ]);
         $title = $request->get('title');
         $content = $request->get('content');
-        $image = $request->get('image_data');
+        $image = $request->get('image');
 
         $blog = new Blog([
             'title' => $title,
             'content' => $content,
-            'image_data'=>$image
+            'image'=>$image
         ]);
 
         $blog->save();
 
-        return ['success'=>[
-            'title' => $title,
-            'content' => $content,
-            'image_data'=>$image
-        ]];
+        return ['success'=>$blog];
     }
 
     /**
@@ -85,21 +81,40 @@ class BlogController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return string[]
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+        {
+            $request->validate([
+                'title'=>'required',
+                'content'=>'required',
+            ]);
+
+            $blog = blog::find($id);
+            $title = $request->get('title');
+            $content = $request->get('content');
+            $image = $request->get('image');
+            $blog->title = $title;
+            $blog->content =$content;
+            $blog->image = $image;
+            $blog->save();
+
+            return ['success'=>$blog];
+        }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+
+     * @return string[]
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
-        //
+        $blog = blog::find($id);
+        $blog->delete();
+        return ['message'=>'deleted'];
     }
 }

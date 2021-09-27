@@ -51,7 +51,7 @@ const uploadFile = async (filename, path, imageData, callbackFn) => {
             getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
                 console.log("File available at", downloadURL);
                 res.status = true;
-                res.message = false;
+                res.message = downloadURL;
                 callbackFn(res);
             });
         }

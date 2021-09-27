@@ -1,6 +1,8 @@
 <template>
   <div class="Image">
-    <a class="btn" @click="toggleShow">set avatar</a>
+
+    <a class="btn" @click="toggleShow"> <add-image />
+        {{this.imageToUpdate ? 'Change image': 'Add Image'}}</a>
     <my-upload
       field="img"
       @crop-success="cropSuccess"
@@ -16,19 +18,28 @@
 </template>
 
 <script>
-import myUpload from "vue-image-crop-upload/upload-2.vue";
-export default {
+    import myUpload from "vue-image-crop-upload/upload-2.vue";
+    import AddImage from "./AddImage";
+
+    export default {
   name: "ImageUpload",
-  data() {
+        created() {
+      if( this.imageToUpdate){
+          this.imgDataUrl = this.imageToUpdate;
+      }
+        },
+        data() {
     return {
       show: false,
       headers: {
         smail: "*_~",
       },
-      imgDataUrl: "", // the datebase64 url of created image
+      imgDataUrl: " ", // the datebase64 url of created image
     };
   },
+        props:['imageToUpdate'],
   components: {
+      AddImage,
     "my-upload": myUpload,
   },
   methods: {

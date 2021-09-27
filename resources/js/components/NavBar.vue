@@ -111,7 +111,7 @@
                             >
                           </li>
                           <li>
-                            <router-link :to="{ name: 'articles' }">
+                            <router-link :to="{ name: 'article' }">
                               Articles</router-link
                             >
                           </li>
@@ -124,17 +124,17 @@
                       </li>
 
                       <li class="menu-item-has-children">
-                        <router-link :to="{ name: 'careers' }">
+                        <router-link :to="{ name: 'career' }">
                           Careers</router-link
                         >
                         <ul class="sub-menu">
                           <li>
-                            <router-link :to="{ name: 'careers' }">
+                            <router-link :to="{ name: 'career' }">
                               Careers</router-link
                             >
                           </li>
                           <li class="last-item">
-                            <router-link :to="{ name: 'careers-two' }">
+                            <router-link :to="{ name: 'career' }">
                               Careers</router-link
                             >
                           </li>

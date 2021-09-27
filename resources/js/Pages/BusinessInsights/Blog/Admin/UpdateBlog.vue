@@ -14,14 +14,14 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <ImageUpload
-                        @get-image-string="setImageValue"
+                        @get-image-string="setImageValue" :imageToUpdate="this.blog.image"
                       ></ImageUpload>
                     </div>
                     <div class="col-lg-12">
                       <div class="form-field">
                         <label>Title</label>
                         <input
-                          v-model="title"
+                          v-model="blog.title"
                           type="text"
 
                           name="email"
@@ -33,7 +33,7 @@
                       <div class="form-field mb-30">
                         <label>Content</label>
                         <textarea
-                          v-model="content"
+                          v-model="blog.content"
                           rows="7"
                           id="message"
                           name="message"
@@ -139,26 +139,33 @@ import {blogPath} from "../../../../bucketPaths";
 import {uploadFile} from "../../../../storage";
 export default {
   components: { ImageUpload, Image },
-  name: "AddBlog",
-  created() {},
+  name: "UpdateBlog",
+  created() {
+      this.$store.commit('setCurrentBlog',parseInt(this.id))
+  },
+    props:['id'],
   computed:{
       isProcessing(){
           return this.loading;
+      },
+      blog () {
+          return this.$store.getters.getCurrentBlog;
       }
   },
   data() {
     return {
         loading:false,
-      imgDataString: "",
-      title: "",
-        content:"Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
       message: "",
       uploadValue: "",
     };
   },
-  props: {},
+
+    mounted() {
+        this.$store.commit('setCurrentBlog',parseInt(this.id))
+    },
   methods: {
     setImageValue(data) {
+        this.blog.image = "";
       this.imgDatString = data;
     },
     async createPost() {
@@ -168,11 +175,12 @@ export default {
           if (!url.status){
               return ;
           }
+
         await  axios
-              .post("/api/blog", {
+              .put(`/api/blog/${that.id}` , {
                   image:url.message,
-                  title:that.title,
-                  content:that.content
+                  title:that.blog.title,
+                  content:that.blog.content
               })
               .then(function (response) {
                   that.message = response.data;
@@ -188,7 +196,8 @@ export default {
                   })
                   console.log(that.message)
                   that.loading = !that.loading;
-                  that.$router.push('blog-details/'+that.message.success.id)
+                  that.$router.push({ name: 'blog-details', params: {id: `${that.message.success.id }`}});
+                  // that.$router.('blog-details/'+that.message.success.id)
               });
       };
         function dataURLtoFile(dataUrl, filename) {
@@ -202,6 +211,13 @@ export default {
                 u8arr[n] = bStr.charCodeAt(n);
             }
             return new File([u8arr], filename, {type:mime});
+        }
+        if(this.blog.image.startsWith('https://firebases')){
+           await getResponse({
+                message:this.blog.image,
+                status:true
+            })
+            return ;
         }
         const file = dataURLtoFile(that.imgDatString,'file.jpg');
         await uploadFile(that.title, blogPath, file , getResponse);

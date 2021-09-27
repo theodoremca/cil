@@ -11218,9 +11218,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "App",
+  mounted: function mounted() {},
+  props: ['isAdmin'],
   components: {
     NavBar: function NavBar() {
       return __webpack_require__.e(/*! import() */ "resources_js_components_NavBar_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/NavBar.vue */ "./resources/js/components/NavBar.vue"));
@@ -11397,11 +11398,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   name: "AddBlog",
   created: function created() {},
+  computed: {
+    isProcessing: function isProcessing() {
+      return this.loading;
+    }
+  },
   data: function data() {
     return {
+      loading: false,
       imgDataString: "",
       title: "",
-      content: "",
+      content: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
       message: "",
       uploadValue: ""
     };
@@ -11420,15 +11427,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                dataURLtoFile = function _dataURLtoFile(dataurl, filename) {
-                  var arr = dataurl.split(','),
+                dataURLtoFile = function _dataURLtoFile(dataUrl, filename) {
+                  var arr = dataUrl.split(','),
                       mime = arr[0].match(/:(.*?);/)[1],
-                      bstr = atob(arr[1]),
-                      n = bstr.length,
+                      bStr = atob(arr[1]),
+                      n = bStr.length,
                       u8arr = new Uint8Array(n);
 
                   while (n--) {
-                    u8arr[n] = bstr.charCodeAt(n);
+                    u8arr[n] = bStr.charCodeAt(n);
                   }
 
                   return new File([u8arr], filename, {
@@ -11436,6 +11443,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 };
 
+                _this.loading = !_this.loading;
                 that = _this;
 
                 getResponse = /*#__PURE__*/function () {
@@ -11454,15 +11462,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                           case 2:
                             _context.next = 4;
                             return axios.post("/api/blog", {
-                              image_data: url.message,
-                              title: _this.title,
-                              content: _this.content
+                              image: url.message,
+                              title: that.title,
+                              content: that.content
                             }).then(function (response) {
                               that.message = response.data;
                             })["catch"](function (error) {
                               that.message = error;
                             })["finally"](function (response) {
+                              console.log({
+                                image_data: url.message,
+                                title: that.title,
+                                content: that.content
+                              });
                               console.log(that.message);
+                              that.loading = !that.loading;
+                              that.$router.push('blog-details/' + that.message.success.id);
                             });
 
                           case 4:
@@ -11479,10 +11494,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }();
 
                 file = dataURLtoFile(that.imgDatString, 'file.jpg');
-                _context2.next = 6;
+                _context2.next = 7;
                 return (0,_storage__WEBPACK_IMPORTED_MODULE_3__.uploadFile)(that.title, _bucketPaths__WEBPACK_IMPORTED_MODULE_2__.blogPath, file, getResponse);
 
-              case 6:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -11491,6 +11506,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'add-image'
 });
 
 /***/ }),
@@ -11507,6 +11544,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue_image_crop_upload_upload_2_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-image-crop-upload/upload-2.vue */ "./node_modules/vue-image-crop-upload/upload-2.vue");
+/* harmony import */ var _AddImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddImage */ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue");
+//
+//
 //
 //
 //
@@ -11525,19 +11565,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ImageUpload",
+  created: function created() {
+    if (this.imageToUpdate) {
+      this.imgDataUrl = this.imageToUpdate;
+    }
+  },
   data: function data() {
     return {
       show: false,
       headers: {
         smail: "*_~"
       },
-      imgDataUrl: "" // the datebase64 url of created image
+      imgDataUrl: " " // the datebase64 url of created image
 
     };
   },
+  props: ['imageToUpdate'],
   components: {
+    AddImage: _AddImage__WEBPACK_IMPORTED_MODULE_1__["default"],
     "my-upload": vue_image_crop_upload_upload_2_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
@@ -11574,37 +11622,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var businessInsights = [{
-  path: 'blog',
+  path: '/blog',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_Blog_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Blog/Blog */ "./resources/js/Pages/BusinessInsights/Blog/Blog.vue"));
   },
   name: 'blog'
 }, {
-  path: 'add-blog',
+  path: '/add-blog',
   component: function component() {
     return Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ../../Pages/BusinessInsights/Blog/Admin/AddBlog */ "./resources/js/Pages/BusinessInsights/Blog/Admin/AddBlog.vue"));
   },
-  name: 'add-blog'
+  name: 'add-blog',
+  meta: {
+    requiresAuth: true
+  }
 }, {
-  path: 'blog-details',
+  path: '/blog-update/:id',
   component: function component() {
-    return Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ../../Pages/BusinessInsights/Blog/Admin/AddBlog */ "./resources/js/Pages/BusinessInsights/Blog/Admin/AddBlog.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_Admin_UpdateBlog_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../../Pages/BusinessInsights/Blog/Admin/UpdateBlog */ "./resources/js/Pages/BusinessInsights/Blog/Admin/UpdateBlog.vue"));
   },
+  name: 'update-blog',
+  props: true,
+  meta: {
+    requiresAuth: true
+  }
+}, {
+  path: '/blog-details/:id',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../../Pages/BusinessInsights/Blog/BlogDetails/BlogDetails */ "./resources/js/Pages/BusinessInsights/Blog/BlogDetails/BlogDetails.vue"));
+  },
+  props: true,
   name: 'blog-details'
 }, {
-  path: 'article',
+  path: '/article',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_Article_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Article/Article */ "./resources/js/Pages/BusinessInsights/Article/Article.vue"));
   },
   name: 'article'
 }, {
-  path: 'article-details',
+  path: '/article-details',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails */ "./resources/js/Pages/BusinessInsights/Article/ArticleDetails/ArticleDetails.vue"));
   },
   name: 'article-details'
 }, {
-  path: 'case-study',
+  path: '/case-study',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_BusinessInsights_CaseStudy_vue").then(__webpack_require__.bind(__webpack_require__, /*! .././../Pages/BusinessInsights/CaseStudy */ "./resources/js/Pages/BusinessInsights/CaseStudy.vue"));
   },
@@ -11625,14 +11687,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ "./resources/js/Router/routes.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/Router/routes.js");
+/* harmony import */ var _Store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Store */ "./resources/js/Store/index.js");
 
 
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: 'history',
-  routes: _routes__WEBPACK_IMPORTED_MODULE_0__["default"]
+  routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
+router.beforeEach( /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(to, from, next) {
+    var requiresAuth, isLoggedIn;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!to.path.startsWith('/blog')) {
+              _context.next = 3;
+              break;
+            }
+
+            _context.next = 3;
+            return _Store__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch('getBlogs');
+
+          case 3:
+            requiresAuth = to.matched.some(function (x) {
+              return x.meta.requiresAuth;
+            });
+            isLoggedIn = window.auth_user != null;
+
+            if (requiresAuth && !isLoggedIn) {
+              // next('/login')
+              window.location.href = '/login';
+            } else {
+              next();
+            }
+
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x, _x2, _x3) {
+    return _ref.apply(this, arguments);
+  };
+}());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
@@ -11662,44 +11774,50 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
-var routes = [].concat(_toConsumableArray(_Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__["default"]), [{
-  path: 'what-we-do',
+var routes = [{
+  path: '/',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_WhatWeDo_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/WhatWeDo */ "./resources/js/Pages/WhatWeDo/WhatWeDo.vue"));
+  },
+  name: 'home'
+}].concat(_toConsumableArray(_Routes_BusinessInsights__WEBPACK_IMPORTED_MODULE_0__["default"]), [{
+  path: '/what-we-do',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_WhatWeDo_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/WhatWeDo */ "./resources/js/Pages/WhatWeDo/WhatWeDo.vue"));
   },
   name: 'what-we-do'
 }, {
-  path: 'processes',
+  path: '/processes',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhatWeDo_Processes_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhatWeDo/Processes */ "./resources/js/Pages/WhatWeDo/Processes.vue"));
   },
   name: 'processes'
 }, {
-  path: 'who-we-are',
+  path: '/who-we-are',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhoWeAre_WhoWeAre_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhoWeAre/WhoWeAre */ "./resources/js/Pages/WhoWeAre/WhoWeAre.vue"));
   },
   name: 'who-we-are'
 }, {
-  path: 'team',
+  path: '/team',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_WhoWeAre_Teams_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/WhoWeAre/Teams */ "./resources/js/Pages/WhoWeAre/Teams.vue"));
   },
   name: 'team'
 }, {
-  path: 'contact',
+  path: '/contact',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_Contact_Contact_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Contact/Contact */ "./resources/js/Pages/Contact/Contact.vue"));
   },
   name: 'contact'
 }, {
-  path: 'career',
+  path: '/career',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_Careers_Careers_Careers_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Careers/Careers/Careers */ "./resources/js/Pages/Careers/Careers/Careers.vue"));
   },
   name: 'career'
 }, {
-  path: 'opportunities',
+  path: '/opportunities',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_Pages_Careers_Opportunities_Opportunities_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Careers/Opportunities/Opportunities */ "./resources/js/Pages/Careers/Opportunities/Opportunities.vue"));
   },
@@ -11720,21 +11838,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+var test = function test() {
+  console.log('Testing');
+};
+
+var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store({
   state: {
-    count: 0
+    user: null,
+    processing: false,
+    isAdmin: false,
+    blogs: [{
+      id: 1,
+      image: "https://firebasestorage.googleapis.com/v0/b/cil-2021.appspot.com/o/blog%2Fimages%2Ftheodoreimonigierrrrrre%40gmail.com?alt=media&token=96467baa-2f9b-4dbb-a586-f7a12207072b",
+      title: "Leverage agile frameworks",
+      content: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
+      dateCreated: Date.now()
+    }, {
+      id: 2,
+      image: "https://firebasestorage.googleapis.com/v0/b/cil-2021.appspot.com/o/blog%2Fimages%2Ftheodoreimonigierrrrrre%40gmail.com?alt=media&token=96467baa-2f9b-4dbb-a586-f7a12207072b",
+      title: "2 agile frameworks",
+      content: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
+      dateCreated: Date.now()
+    }, {
+      id: 3,
+      image: "https://firebasestorage.googleapis.com/v0/b/cil-2021.appspot.com/o/blog%2Fimages%2Ftheodoreimonigierrrrrre%40gmail.com?alt=media&token=96467baa-2f9b-4dbb-a586-f7a12207072b",
+      title: " 3agile frameworks",
+      content: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.",
+      dateCreated: Date.now()
+    }],
+    currentBlog: {}
   },
   mutations: {
-    INCREMENT: function INCREMENT(state) {
-      state.count++;
+    setAuthUser: function setAuthUser(state, user) {
+      state.user = user;
+    },
+    process: function process(state) {
+      state.processing = !state.processing;
+    },
+    updateAuthStatus: function updateAuthStatus(state, isAdmin) {
+      state.isAdmin = isAdmin;
+    },
+    setCurrentBlog: function setCurrentBlog(state, id) {
+      state.currentBlog = state.blogs.filter(function (blog) {
+        return blog.id === id;
+      })[0];
+    },
+    updateBlogs: function updateBlogs(state, newBlogs) {
+      // state.blogs.unshift(...newBlogs)
+      state.blogs = newBlogs;
     }
   },
-  actions: {}
+  actions: {
+    getBlogs: function getBlogs(state) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get("/api/blog").then(function (response) {
+                  res = response.data;
+                })["catch"](function (error) {
+                  res = error;
+                })["finally"](function (response) {
+                  console.log(res);
+                });
+
+              case 2:
+                state.commit('updateBlogs', res);
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  getters: {
+    getAdminStatus: function getAdminStatus(state) {
+      return state.isAdmin;
+    },
+    getCurrentBlog: function getCurrentBlog(state) {
+      return state.currentBlog;
+    },
+    getBlogs: function getBlogs(state) {
+      return state.blogs;
+    },
+    getProcessingStatus: function getProcessingStatus(state) {
+      return state.processing;
+    },
+    isLoggedIn: function isLoggedIn(state) {
+      return state.user !== null;
+    }
+  }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
@@ -11977,7 +12190,7 @@ var uploadFile = /*#__PURE__*/function () {
               (0,_firebase__WEBPACK_IMPORTED_MODULE_1__.getDownloadURL)(uploadTask.snapshot.ref).then(function (downloadURL) {
                 console.log("File available at", downloadURL);
                 res.status = true;
-                res.message = false;
+                res.message = downloadURL;
                 callbackFn(res);
               });
             });
@@ -11995,6 +12208,30 @@ var uploadFile = /*#__PURE__*/function () {
   };
 }();
 
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".file-upload[data-v-bd84cee2] {\n  height: 50px;\n  width: 200px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: 4px solid #032e42;\n  overflow: hidden;\n  background-image: linear-gradient(to bottom, #d83030 50%, #032e42 50%);\n  background-size: 100% 200%;\n  transition: all 1s;\n  color: #032e42;\n  font-size: 100px;\n}\n.file-upload input[type=file][data-v-bd84cee2] {\n  height: 50px;\n  width: 200px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  opacity: 0;\n  cursor: pointer;\n}\n.file-upload[data-v-bd84cee2]:hover {\n  background-position: 0 -100%;\n  color: #d83030;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
@@ -30729,6 +30966,36 @@ try {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_style_index_0_id_bd84cee2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_style_index_0_id_bd84cee2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_style_index_0_id_bd84cee2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-image-crop-upload/upload-2.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-image-crop-upload/upload-2.vue?vue&type=style&index=0&lang=css& ***!
@@ -32788,6 +33055,7 @@ __webpack_require__.r(__webpack_exports__);
 				ki
 			} = this;
 			this.$emit('crop-success', createImgUrl, field, ki);
+            this.off();
 		},
 		// 上传图片
 
@@ -32932,6 +33200,47 @@ component.options.__file = "resources/js/Pages/BusinessInsights/Blog/Admin/AddBl
 
 /***/ }),
 
+/***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddImage.vue?vue&type=template&id=bd84cee2&scoped=true& */ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true&");
+/* harmony import */ var _AddImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddImage.vue?vue&type=script&lang=js& */ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js&");
+/* harmony import */ var _AddImage_vue_vue_type_style_index_0_id_bd84cee2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& */ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AddImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "bd84cee2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/ImageUpload.vue":
 /*!************************************************************************************!*\
   !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/ImageUpload.vue ***!
@@ -33019,6 +33328,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddImage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/ImageUpload.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************!*\
   !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/ImageUpload.vue?vue&type=script&lang=js& ***!
@@ -33032,6 +33357,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImageUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ImageUpload.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/ImageUpload.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImageUpload_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&":
+/*!*******************************************************************************************************************************************!*\
+  !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& ***!
+  \*******************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_2_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_12_0_rules_0_use_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_style_index_0_id_bd84cee2_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!../../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!../../../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-12[0].rules[0].use[3]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=style&index=0&id=bd84cee2&scoped=true&lang=scss&");
+
 
 /***/ }),
 
@@ -33128,6 +33466,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBlog_vue_vue_type_template_id_1c2f9f11_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBlog_vue_vue_type_template_id_1c2f9f11_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddBlog.vue?vue&type=template&id=1c2f9f11&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/AddBlog.vue?vue&type=template&id=1c2f9f11&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true& ***!
+  \****************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddImage_vue_vue_type_template_id_bd84cee2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddImage.vue?vue&type=template&id=bd84cee2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true&");
 
 
 /***/ }),
@@ -33777,7 +34132,17 @@ var render = function() {
                             })
                           ]),
                           _vm._v(" "),
-                          _vm._m(0)
+                          _c("div", { staticClass: "form-button mt-30" }, [
+                            _c("button", {
+                              staticClass: "readon radius",
+                              attrs: { disabled: _vm.isProcessing },
+                              domProps: {
+                                textContent: _vm._s(
+                                  _vm.isProcessing ? "posting" : "post"
+                                )
+                              }
+                            })
+                          ])
                         ])
                       ])
                     ]
@@ -33786,7 +34151,9 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(1)
+             false
+              ? 0
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { attrs: { id: "sticky-end" } })
@@ -33800,157 +34167,157 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-button mt-30" }, [
-      _c("button", { staticClass: "readon radius" }, [_vm._v("Post")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "col-lg-4 md-mb-50 pl-35 lg-pl-15 md-order-first" },
+      { staticClass: "blog-sidebar", attrs: { id: "sticky-sidebar" } },
       [
+        _c("div", { staticClass: "sidebar-search sidebar-grid shadow mb-50" }, [
+          _c("form", { staticClass: "search-bar" }, [
+            _c("input", { attrs: { type: "text", placeholder: "Search..." } }),
+            _vm._v(" "),
+            _c("span", [
+              _c("button", { attrs: { type: "submit" } }, [
+                _c("i", { staticClass: "flaticon-search" })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "blog-sidebar", attrs: { id: "sticky-sidebar" } },
+          { staticClass: "sidebar-popular-post sidebar-grid shadow mb-50" },
           [
-            _c(
-              "div",
-              { staticClass: "sidebar-search sidebar-grid shadow mb-50" },
-              [
-                _c("form", { staticClass: "search-bar" }, [
-                  _c("input", {
-                    attrs: { type: "text", placeholder: "Search..." }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [
-                    _c("button", { attrs: { type: "submit" } }, [
-                      _c("i", { staticClass: "flaticon-search" })
-                    ])
-                  ])
-                ])
-              ]
-            ),
+            _c("div", { staticClass: "sidebar-title" }, [
+              _c("h3", { staticClass: "title mb-20" }, [_vm._v("Recent Post")])
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "sidebar-popular-post sidebar-grid shadow mb-50" },
-              [
-                _c("div", { staticClass: "sidebar-title" }, [
-                  _c("h3", { staticClass: "title mb-20" }, [
-                    _vm._v("Recent Post")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "single-post mb-20" }, [
-                  _c("div", { staticClass: "post-image" }, [
-                    _c("a", { attrs: { href: "blog-single.html" } }, [
-                      _c("img", {
-                        attrs: {
-                          src: "assets/images/blog/small/1.jpg",
-                          alt: "post image"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "post-desc" }, [
-                    _c("div", { staticClass: "post-title" }, [
-                      _c("h5", { staticClass: "margin-0" }, [
-                        _c("a", { attrs: { href: "blog-single.html" } }, [
-                          _vm._v(
-                            "Covid-19 threatens the next generation of smartphones\n                      "
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("ul", [
-                      _c("li", [
-                        _c("i", { staticClass: "fa fa-calendar" }),
-                        _vm._v(" 28 June, 2019")
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "single-post" }, [
-                  _c("div", { staticClass: "post-image" }, [
-                    _c("a", { attrs: { href: "blog-single.html" } }, [
-                      _c("img", {
-                        attrs: {
-                          src: "assets/images/blog/small/5.jpg",
-                          alt: "post image"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "post-desc" }, [
-                    _c("div", { staticClass: "post-title" }, [
-                      _c("h5", { staticClass: "margin-0" }, [
-                        _c("a", { attrs: { href: "blog-single.html" } }, [
-                          _vm._v(
-                            "Covid-19 threatens the next generation of smartphones\n                      "
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("ul", [
-                      _c("li", [
-                        _c("i", { staticClass: "fa fa-calendar" }),
-                        _vm._v(" 28 June, 2019")
-                      ])
-                    ])
-                  ])
+            _c("div", { staticClass: "single-post mb-20" }, [
+              _c("div", { staticClass: "post-image" }, [
+                _c("a", { attrs: { href: "blog-single.html" } }, [
+                  _c("img", {
+                    attrs: {
+                      src: "assets/images/blog/small/1.jpg",
+                      alt: "post image"
+                    }
+                  })
                 ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "sidebar-categories sidebar-grid shadow" },
-              [
-                _c("div", { staticClass: "sidebar-title" }, [
-                  _c("h3", { staticClass: "title mb-20" }, [
-                    _vm._v("Categories")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "post-desc" }, [
+                _c("div", { staticClass: "post-title" }, [
+                  _c("h5", { staticClass: "margin-0" }, [
+                    _c("a", { attrs: { href: "blog-single.html" } }, [
+                      _vm._v(
+                        "Covid-19 threatens the next generation of smartphones\n                      "
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
                 _c("ul", [
                   _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Consulting")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Creative")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Development")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Finance")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Management")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Strategy")])
+                    _c("i", { staticClass: "fa fa-calendar" }),
+                    _vm._v(" 28 June, 2019")
                   ])
                 ])
-              ]
-            )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "single-post" }, [
+              _c("div", { staticClass: "post-image" }, [
+                _c("a", { attrs: { href: "blog-single.html" } }, [
+                  _c("img", {
+                    attrs: {
+                      src: "assets/images/blog/small/5.jpg",
+                      alt: "post image"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "post-desc" }, [
+                _c("div", { staticClass: "post-title" }, [
+                  _c("h5", { staticClass: "margin-0" }, [
+                    _c("a", { attrs: { href: "blog-single.html" } }, [
+                      _vm._v(
+                        "Covid-19 threatens the next generation of smartphones\n                      "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("ul", [
+                  _c("li", [
+                    _c("i", { staticClass: "fa fa-calendar" }),
+                    _vm._v(" 28 June, 2019")
+                  ])
+                ])
+              ])
+            ])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "sidebar-categories sidebar-grid shadow" }, [
+          _c("div", { staticClass: "sidebar-title" }, [
+            _c("h3", { staticClass: "title mb-20" }, [_vm._v("Categories")])
+          ]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Consulting")])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Creative")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Development")])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Finance")])]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("Management")])
+            ]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Strategy")])])
+          ])
+        ])
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/Pages/BusinessInsights/Blog/Admin/ImageUpload/AddImage.vue?vue&type=template&id=bd84cee2&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "file-upload" }, [
+      _c("i", { staticClass: "fa fa-arrow-up" })
+    ])
   }
 ]
 render._withStripped = true
@@ -33979,9 +34346,18 @@ var render = function() {
     "div",
     { staticClass: "Image" },
     [
-      _c("a", { staticClass: "btn", on: { click: _vm.toggleShow } }, [
-        _vm._v("set avatar")
-      ]),
+      _c(
+        "a",
+        { staticClass: "btn", on: { click: _vm.toggleShow } },
+        [
+          _c("add-image"),
+          _vm._v(
+            "\n      " +
+              _vm._s(this.imageToUpdate ? "Change image" : "Add Image")
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("my-upload", {
         attrs: {
@@ -50714,7 +51090,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Users/theodore_mca/Desk
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_WhatWeDo_WhatWeDo_vue":1,"resources_js_Pages_WhatWeDo_Processes_vue":1,"resources_js_Pages_WhoWeAre_WhoWeAre_vue":1,"resources_js_Pages_WhoWeAre_Teams_vue":1,"resources_js_Pages_Contact_Contact_vue":1,"resources_js_Pages_Careers_Careers_Careers_vue":1,"resources_js_Pages_Careers_Opportunities_Opportunities_vue":1,"resources_js_Pages_BusinessInsights_Blog_Blog_vue":1,"resources_js_Pages_BusinessInsights_Article_Article_vue":1,"resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue":1,"resources_js_Pages_BusinessInsights_CaseStudy_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_WhatWeDo_WhatWeDo_vue":1,"resources_js_Pages_WhatWeDo_Processes_vue":1,"resources_js_Pages_WhoWeAre_WhoWeAre_vue":1,"resources_js_Pages_WhoWeAre_Teams_vue":1,"resources_js_Pages_Contact_Contact_vue":1,"resources_js_Pages_Careers_Careers_Careers_vue":1,"resources_js_Pages_Careers_Opportunities_Opportunities_vue":1,"resources_js_Pages_BusinessInsights_Blog_Blog_vue":1,"resources_js_Pages_BusinessInsights_Blog_Admin_UpdateBlog_vue":1,"resources_js_Pages_BusinessInsights_Blog_BlogDetails_BlogDetails_vue":1,"resources_js_Pages_BusinessInsights_Article_Article_vue":1,"resources_js_Pages_BusinessInsights_Article_ArticleDetails_ArticleDetails_vue":1,"resources_js_Pages_BusinessInsights_CaseStudy_vue":1,"resources_js_components_NavBar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
