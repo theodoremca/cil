@@ -15,8 +15,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Teams"
+  name: "Teams",
+  data: function data() {
+    return {
+      teams: [{
+        photo: "assets/images/team/1.jpg",
+        name: "Mike Jason",
+        designation: "Business Advisor",
+        fb: "",
+        tw: "",
+        gg: ""
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -105,7 +134,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    { staticClass: "row" },
+    _vm._l(_vm.teams, function(member, idx) {
+      return _c("div", { key: idx, staticClass: "col-lg-4 col-sm-6 mb-57" }, [
+        _c("div", { staticClass: "team-item" }, [
+          _c("div", { staticClass: "image-part" }, [
+            _c("a", [_c("img", { attrs: { src: member.photo, alt: "" } })])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "content-part" }, [
+            _c("h4", { staticClass: "name" }, [
+              _c("a", [_vm._v(_vm._s(member.name))])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "designation" }, [
+              _vm._v(_vm._s(member.designation))
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "social-links" }, [
+              member.fb
+                ? _c("li", [
+                    _c("a", { attrs: { href: member.fb } }, [
+                      _c("i", { staticClass: "fa fa-facebook" })
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              member.gg
+                ? _c("li", [
+                    _c("a", { attrs: { href: member.gg } }, [
+                      _c("i", { staticClass: "fa fa-google-plus" })
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              member.tw
+                ? _c("li", [
+                    _c("a", { attrs: { href: _vm.mb.tw } }, [
+                      _c("i", { staticClass: "fa fa-twitter" })
+                    ])
+                  ])
+                : _vm._e()
+            ])
+          ])
+        ])
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

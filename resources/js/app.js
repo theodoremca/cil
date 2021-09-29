@@ -38,15 +38,18 @@ import VueRouter from 'vue-router';
 
 import router from './Router/index';
 import store from './Store/index';
-import App from './App.vue';
-import Admin from './Admin.vue';
+// import App from './App.vue';
+// import Admin from './Admin.vue';
+// import Teams from './Pages/WhoWeAre/Teams'
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.use(VueRouter)
 const app = new Vue({
     el:'#app',
     router,
     store,
-    components:{ App , Admin }
+    // components:{ App , Admin , Teams }
 
 })
 

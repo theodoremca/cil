@@ -4,7 +4,7 @@ import businessInsights from "./Routes/BusinessInsights";
 const routes = [
     {
         path: '/',
-        component:()=>import('../Pages/WhatWeDo/WhatWeDo'),
+        component:()=>import('../Pages/Index11'),
         name:'home'
     },
     ...businessInsights,
