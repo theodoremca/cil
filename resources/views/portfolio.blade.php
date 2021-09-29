@@ -3,11 +3,12 @@
 @section('content')
 
 
-  <script>
-        window.portfolioSlug = {!! json_encode($slug); !!};
-    </script>
 
-<portfolio-page></portfolio-page>
+{{--  <script>--}}
+{{--        window.portfolioSlug = {};--}}
+{{--    </script>--}}
+
+<portfolio-page slug="{{$slug}}"></portfolio-page>
 
 @endsection
 <script>

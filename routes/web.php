@@ -23,10 +23,10 @@ Route::get('/', function () {
 
 })->where('any', '.*');
 
-Route::get('/what-we-do/port-folio/{any}', function ($any) {
-    return view('portfolio', compact('any'));
+Route::get('/what-we-do/port-folio/{slug}', function ($slug) {
+    return view('portfolio', compact('slug'));
 
-})->where('any', '.*');
+})->where('slug', '.*');
 
 
 Route::view('contact', 'contact');

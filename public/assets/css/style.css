@@ -6327,7 +6327,7 @@ body .modal-backdrop {
   background-image: url(../../../uploads/inner4.jpeg);
 }
 .rs-breadcrumbs.bg-7 {
-  background-image: url(assets/images/breadcrumbs/7.jpg);
+  background: #d83030;
 }
 .rs-breadcrumbs.bg-8 {
   background-image: url(assets/images/breadcrumbs/8.jpg);
