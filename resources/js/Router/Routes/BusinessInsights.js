@@ -10,18 +10,18 @@ const businessInsights = [
         path: '/add-blog',
         component:()=>import('../../Pages/BusinessInsights/Blog/Admin/AddBlog'),
         name:'add-blog',
-        // meta: {
-        //     requiresAuth: true
-        // }
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/blog-update/:id',
         component:()=>import('../../Pages/BusinessInsights/Blog/Admin/UpdateBlog'),
         name:'update-blog',
         props:true,
-        // meta: {
-        //     requiresAuth: true
-        // }
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/blog-details/:id',
