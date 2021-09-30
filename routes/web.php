@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 })->where('any', '.*');
 
-Route::get('/what-we-do/port-folio/{slug}', function ($slug) {
+Route::get('/what-we-do/portfolio/{slug}', function ($slug) {
     return view('portfolio', compact('slug'));
 
 })->where('slug', '.*');
@@ -32,4 +32,14 @@ Route::get('/what-we-do/port-folio/{slug}', function ($slug) {
 Route::view('contact', 'contact');
 Route::view('who-we-are/about', 'about');
 Route::view('who-we-are/teams', 'teams');
+Route::view('who-we-are/teams', 'teams');
 Route::get('/who-we-are/teams/{id}', [App\Http\Controllers\HomeController::class,]);
+
+
+Route::view('what-we-do', 'what_we_do');
+Route::view('what-we-do/faq', 'faq');
+Route::view('/what-we-do/portfolio','portfolio_list');
+Route::get('/what-we-do/we-do/{slug}', function ($slug) {
+    return view('do', compact('slug'));
+
+});

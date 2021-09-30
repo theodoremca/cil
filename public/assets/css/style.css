@@ -14560,7 +14560,7 @@ body .modal-backdrop {
   margin-right: 6px;
 }
 .rs-footer .footer-bottom .footer-social li a {
-  display: inline-block;
+
   font-size: 15px;
   border-radius: 3px;
   width: 30px;
@@ -14569,6 +14569,7 @@ body .modal-backdrop {
   background: #d83030;
   color: #ffffff;
   text-align: center;
+    padding:8px;
 }
 .rs-footer .footer-bottom .footer-social li a:hover {
   background: #228bfd;

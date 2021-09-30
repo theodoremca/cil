@@ -1,0 +1,60 @@
+[
+    {
+        "image": "https://keenitsolutions.com/products/wordpress/reobiz/wp-content/uploads/2019/10/single-2-1.jpg",
+        "body": "Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.",
+        "list":[
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error"
+        ],
+        "title":"Consumer Digital Product",
+        "slug":"consumer-digital-product"
+    },
+    {
+        "image": "https://keenitsolutions.com/products/wordpress/reobiz/wp-content/uploads/2019/10/single-2-1.jpg",
+        "body": "Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.",
+        "list":[
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error"
+        ],
+        "title":"Enterprise Digital Products",
+        "slug":"enterprise-digital-products"
+    },
+    {
+        "image": "https://keenitsolutions.com/products/wordpress/reobiz/wp-content/uploads/2019/10/single-2-1.jpg",
+        "body": "Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.",
+        "list":[
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error"
+        ],
+        "title":"Managed Product Teams",
+        "slug":"managed-product-teams"
+    },
+    {
+        "image": "https://keenitsolutions.com/products/wordpress/reobiz/wp-content/uploads/2019/10/single-2-1.jpg",
+        "body": "Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.",
+        "list":[
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error",
+            "Sed ut perspiciatis unde omnis iste natus error"
+        ],
+        "title":"Managed Service Teams",
+        "slug":"managed-service-teams"
+    },
+    {
+        "image": "https://keenitsolutions.com/products/wordpress/reobiz/wp-content/uploads/2019/10/single-2-1.jpg",
+        "body": "Cras enim urna, interdum nec porttitor vitae, sollicitudin eu eros. Praesent eget mollis nulla, non lacinia urna. Donec sit amet neque auctor, ornare dui rutrum, condimentum justo. Duis dictum, ex accumsan eleifend eleifend, ex justo aliquam nunc, in ultrices ante quam eget massa. Sed scelerisque, odio eu tempor pulvinar, magna tortor finibus lorem, ut mattis tellus nunc ut quam. Curabitur quis ornare leo. Suspendisse bibendum nibh non turpis vestibulum pellentesque.",
+        "list":[
+            "DevSecOps", "Cloud IOT"," ML", "MicroFrontends"," MicroServices"
+        ],
+        "title":"Technology Specialty",
+        "slug":"technology-specialty"
+    }
+
+]

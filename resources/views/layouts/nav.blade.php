@@ -86,15 +86,26 @@
                         >
                         <ul class="sub-menu">
                           <li>
-                            <a href="/what-we-do">
-                              >Our Products</a
+                            <a href="/what-we-do/">
+                                What we do </a
                             >
                           </li>
                           <li class="last-item">
                             <a href="/what-we-do/processes">
-                              >Our Processes</a
+                              Our Processes</a
                             >
                           </li>
+                            <li class="last-item">
+                                <a href="/what-we-do/portfolio">
+                                    Our Porfolio</a
+                                >
+                            </li>
+
+                            <li class="last-item">
+                                <a href="/what-we-do/faq">
+                                   faq</a
+                                >
+                            </li>
                         </ul>
                       </li>
 
@@ -151,69 +162,7 @@
                 </div>
                 <!-- //.main-menu -->
                 <div class="expand-btn-inner">
-                  <ul>
-                    <li>
-                      <a
-                        class="hidden-xs rs-search"
-                        data-target=".search-modal"
-                        data-toggle="modal"
-                        href="#"
-                      >
-                        <i class="fa fa-search"></i>
-                      </a>
-                    </li>
-                    <li class="icon-bar cart-inner mini-cart-active">
-                      <a class="cart-icon"><i class="flaticon-bag"></i> </a>
-                      <div class="woocommerce-mini-cart text-left">
-                        <ul class="cart-icon-product-list">
-                          <li class="display-flex">
-                            <div class="icon-cart">
-                              <a href="#"><i class="fa fa-times"></i></a>
-                            </div>
-                            <div class="product-info">
-                              <a href="cart.html">Cordless Drill</a><br />
-                              <span class="quantity">1 × $30.00</span>
-                            </div>
-                            <div class="product-image">
-                              <a href="cart.html"
-                                ><img
-                                  src="assets/images/shop/1.jpg"
-                                  alt="Product Image"
-                              /></a>
-                            </div>
-                          </li>
-                          <li class="display-flex">
-                            <div class="icon-cart">
-                              <a href="#"><i class="fa fa-times"></i></a>
-                            </div>
-                            <div class="product-info">
-                              <a href="cart.html">Spirit Level</a><br />
-                              <span class="quantity">1 × $30.00</span>
-                            </div>
-                            <div class="product-image">
-                              <a href="cart.html"
-                                ><img
-                                  src="assets/images/shop/2.jpg"
-                                  alt="Product Image"
-                              /></a>
-                            </div>
-                          </li>
-                        </ul>
 
-                        <div class="total-price text-center">
-                          <span class="subtotal">Subtotal:</span>
-                          <span class="current-price">$85.00</span>
-                        </div>
-
-                        <div class="cart-btn text-center">
-                          <a class="crt-btn btn1" href="cart.html">View Cart</a>
-                          <a class="crt-btn btn2" href="checkout.html"
-                            >Check Out</a
-                          >
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
                   <div class="head-btn pl-30">
                     <a href="#">Get Started</a>
                   </div>

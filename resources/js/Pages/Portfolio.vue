@@ -41,7 +41,7 @@
           >
         </div>
         <div class="btn-part">
-          <a :href="'/what-we-do/port-folio/'+ portfolio.slug"><i class="flaticon-next"></i></a>
+          <a :href="'/what-we-do/portfolio/'+ portfolio.slug"><i class="flaticon-next"></i></a>
         </div>
       </div>
 
